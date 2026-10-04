@@ -11,14 +11,14 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 <br>
 
 <p align="center">
-  <b>⬇️ 설치 — 터미널에 한 줄</b><br><br>
+  <b>⬇️ 설치 — 터미널에 한 줄</b><br>
   <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/install.sh | bash</code>
 </p>
 
 <br>
 
 <p align="center">
-  <b>🗑️ 삭제 — 터미널에 한 줄</b><br><br>
+  <b>🗑️ 삭제 — 터미널에 한 줄</b><br>
   <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/uninstall.sh | bash</code>
 </p>
 
