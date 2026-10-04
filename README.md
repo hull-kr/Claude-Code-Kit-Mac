@@ -8,11 +8,27 @@
 
 Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 
+<br>
+
 <p align="center">
-  <b>⬇️ 설치 — 터미널에 한 줄</b><br>
-  <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/install.sh | bash</code><br>
-  macOS 12 이상 &nbsp;·&nbsp; Apple Silicon · Intel &nbsp;·&nbsp; 무료(Freeware)
+  <b>⬇️ 설치 — 터미널에 한 줄</b><br><br>
+  <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/install.sh | bash</code>
 </p>
+
+<br>
+
+<p align="center">
+  <b>🗑️ 삭제 — 터미널에 한 줄</b><br><br>
+  <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/uninstall.sh | bash</code>
+</p>
+
+<br>
+
+<p align="center">
+  macOS 12 이상 &nbsp;&nbsp;·&nbsp;&nbsp; Apple Silicon · Intel &nbsp;&nbsp;·&nbsp;&nbsp; 무료(Freeware)
+</p>
+
+<br>
 
 <p align="center"><img src="docs/images/panel.png" width="860" alt="컨트롤 패널 (다크)"></p>
 <p align="center"><img src="docs/images/panel-light.png" width="860" alt="컨트롤 패널 (라이트)"></p>
@@ -232,12 +248,12 @@ $ ccd
 - **Claude Code CLI** — 없으면 설정 → 선행 프로그램에서 설치
 - 리모트 컨트롤은 Claude 구독(Pro · Max · Team · Enterprise) 계정 로그인 필요
 
-## 🗑️ 제거
+## 🗑️ 삭제
 ```bash
-osascript -e 'tell application "Claude Code Kit" to quit'
-rm -rf "/Applications/Claude Code Kit.app" ~/Library/Application\ Support/CCKit ~/Library/Application\ Support/Claude\ Code\ Kit
+curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/uninstall.sh | bash
 ```
-세션 기록(`~/.claude`)은 Claude Code 의 것이라 건드리지 않습니다.
+- 지우는 것: 앱, CCKit 설정·데이터(`~/Library/Application Support/CCKit`), 로그인 항목, CCKit 이 만든 `ccd` 명령, 이 앱의 macOS 권한 기록
+- 세션·대화 기록(`~/.claude`)은 Claude Code 의 것이라 **건드리지 않습니다.**
 
 ## 📄 라이선스 / 제작
 - **제작:** [hull.kr](https://hull.kr) · **문의:** kimkap10@gmail.com
