@@ -4,21 +4,21 @@
 
 **[Claude Code](https://claude.ai/code) CLI 의 주요 명령·작업을 macOS 메뉴바 패널에서 클릭 한 번에 조작**
 
-터미널에서 `/remote-control`, `/bg`, `/rename`, `claude --resume`, `claude agents` 같은 명령을 일일이 치는 대신 — 메뉴바에 상주하는 컨트롤 패널에서 세션을 **열고·닫고·관리하고, 백그라운드로 보내고, 폰/웹에서 원격 조종**할 수 있습니다.
+터미널에서 `/remote-control`, `/bg`, `/rename`, `claude --resume`, `claude agents` 같은 명령을 일일이 치는 대신 - 메뉴바에 상주하는 컨트롤 패널에서 세션을 **열고·닫고·관리하고, 백그라운드로 보내고, 폰/웹에서 원격 조종**할 수 있습니다.
 
 Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 
 <br>
 
 <p align="center">
-  <b>⬇️ 설치 — 터미널에 한 줄</b><br>
+  <b>⬇️ 설치 - 터미널에 한 줄</b><br>
   <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/install.sh | bash</code>
 </p>
 
 <br>
 
 <p align="center">
-  <b>🗑️ 삭제 — 터미널에 한 줄</b><br>
+  <b>🗑️ 삭제 - 터미널에 한 줄</b><br>
   <code>curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/download/uninstall.sh | bash</code>
 </p>
 
@@ -68,7 +68,7 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
    ▶ 설치: /Applications/Claude Code Kit.app
    ▶ 실행
 
-   ✅ 설치 완료 — 화면 오른쪽 위 메뉴바의 ✦ 아이콘을 누르세요.
+   ✅ 설치 완료 - 화면 오른쪽 위 메뉴바의 ✦ 아이콘을 누르세요.
    ```
 3. 화면 **오른쪽 위 메뉴바의 ✦ 아이콘** → **컨트롤 패널**.
 4. 처음 세션을 열 때 **"Claude Code Kit 이 Terminal 을 제어하려고 합니다"** → **[허용]**.
@@ -88,7 +88,7 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 
 설정의 **선행 프로그램** 에서 **Node.js · Python · Git · Claude Code** 의 **설치 여부 · 버전 · 최신판인지**를 한눈에 보고, 버튼 하나로 설치/재설치합니다.
 
-- **공식 배포처**로 설치합니다 — Node.js · Python · Git 은 **Homebrew**, Claude Code 는 **Anthropic 공식 설치 스크립트**
+- **공식 배포처**로 설치합니다 - Node.js · Python · Git 은 **Homebrew**, Claude Code 는 **Anthropic 공식 설치 스크립트**
 - 최신판은 `nodejs.org` · `python.org` · Git 릴리즈 · npm 에서 자동으로 확인
 - Homebrew 가 없으면 먼저 Homebrew 를 설치합니다
 - 설치는 **터미널 창에서 진행**돼 진행 상황이 보이고, 암호를 물으면 Mac 로그인 암호를 입력하면 됩니다
@@ -99,7 +99,7 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 
 ### 명령이 인식되지 않을 때
 
-`claude` · `node` 명령을 못 찾는다고 나오면 **터미널을 닫고 새로 여세요.** 그래도 안 되면 **설정 → `환경변수 등록/복구`** —
+`claude` · `node` 명령을 못 찾는다고 나오면 **터미널을 닫고 새로 여세요.** 그래도 안 되면 **설정 → `환경변수 등록/복구`** -
 Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합니다 (기존 파일은 백업).
 
 ---
@@ -117,6 +117,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 | 🔹 **서브에이전트 표시** | 상태칸 `🔹N` → 클릭 시 작업 중 에이전트 목록 |
 | ★ **관리 / 이어서 열기** | 즐겨찾기 세션 + 한 번에 복원 |
 | 🏷️ **그룹** | 강의·개발처럼 세션을 묶고 탭으로 걸러 보기 |
+| 🗓️ **세션 보관 기간** | Claude Code 가 오래된 대화를 지우는 기간 확인·변경, 지워진 세션은 `기간만료` 로 표시 |
 | 🔄 **재부팅 자동 복원** | 로그인 시 재부팅 직전 세션 자동 복원 |
 | 🧩 **선행 프로그램** | Node.js·Python·Git·Claude Code 확인·설치·최신판 비교 |
 | 🔔 **업데이트** | 새 버전 알림 · 앱 안에서 바로 업데이트 |
@@ -129,21 +130,21 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 ### 🖼️ 이미지 붙여넣기
 캡처 후 터미널에서 **`⌃`+`⇧`+`V`** → 방금 찍은 이미지가 **그 세션 폴더의 `.tmp/clipboard/`** 에 저장되고, 그 경로가 입력칸에 자동으로 들어갑니다. (미리보기 팝업이 잠깐 뜸)
 
-- 캡처는 **`⌘`+`⇧`+`4`**(파일로 저장 — 방금 2분 안에 찍은 스크린샷 파일을 씁니다)도, **`⌃`+`⌘`+`⇧`+`4`**(클립보드로 복사)도 됩니다.
+- 캡처는 **`⌘`+`⇧`+`4`**(파일로 저장 - 방금 2분 안에 찍은 스크린샷 파일을 씁니다)도, **`⌃`+`⌘`+`⇧`+`4`**(클립보드로 복사)도 됩니다.
 
 ```
 ❯ .tmp/clipboard/clip-20260924-153824.png
 ```
 
-- **Terminal.app** — Claude Code 세션 탭이면 권한 없이 바로 입력됩니다. 경로 뒤에 줄바꿈이 들어가지만 메시지는 보내지 않으니 이어서 질문을 쓰면 됩니다.
-- **iTerm2** — 경로만 바로 입력됩니다.
+- **Terminal.app** - Claude Code 세션 탭이면 권한 없이 바로 입력됩니다. 경로 뒤에 줄바꿈이 들어가지만 메시지는 보내지 않으니 이어서 질문을 쓰면 됩니다.
+- **iTerm2** - 경로만 바로 입력됩니다.
 - ⌃⇧V 는 터미널이 맨 앞일 때만 잡습니다. 다른 앱에서는 그 앱의 원래 기능대로 동작합니다.
 - 단축키·미리보기 시간/크기·알림은 설정에서 바꿀 수 있습니다.
 
 ### 🗂️ 컨트롤 패널
 - **탭:** ★관리 / ●열린 / ○닫힌 / ▦모든 세션 / ⚙설정 / ?사용 설명서
 - **상태 색:** 작업 중(주황) · 대기(초록) · 닫힘(회색) · 백그라운드(파랑)
-- **각 세션 칸:** 관리(★) · 그룹 · 새창 · 리모트(●/○) · 열기(닫기/열기/화면표시·화면닫기) · 동작(bg 전환/삭제/닫기) — 여러 개 선택(⌘/⇧ 클릭)해 한꺼번에도
+- **각 세션 칸:** 관리(★) · 그룹 · 새창 · 리모트(●/○) · 열기(닫기/열기/화면표시·화면닫기) · 동작(bg 전환/삭제/닫기) - 여러 개 선택(⌘/⇧ 클릭)해 한꺼번에도
 - **폴더 칸 클릭** = Finder 로 그 폴더 열기
 - **더블클릭:** 제목칸 = 이름 바꾸기, 상태·종류·시작칸 = 상세 정보
 - **모든 세션** 탭에서 열린·닫힌 세션을 한눈에 (닫힌 세션 열기/삭제, 빈 세션 정리)
@@ -153,11 +154,11 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 ### 🖱️ 우클릭 메뉴
 세션 행을 **우클릭**하면 그 세션으로 할 수 있는 것이 전부 그룹으로 모여 뜹니다. 지금 상태에 맞는 항목만 나옵니다(리모트가 켜져 있으면 "리모트 끄기", 관리 세션이면 "관리 제거").
 
-- **정보** — 상세 정보, 세션ID 복사
-- **탐색** — 터미널 창 앞으로, 폴더 열기, 이름 바꾸기
-- **그룹** — 그룹 지정
-- **상태 전환** — 세션 재시작(닫고 바로 다시 열기) · 리모트 켜기/끄기 · 관리 추가/제거 · bg 전환
-- **닫기/삭제** — 아래쪽에 따로 구분
+- **정보** - 상세 정보, 세션ID 복사
+- **탐색** - 터미널 창 앞으로, 폴더 열기, 이름 바꾸기
+- **그룹** - 그룹 지정
+- **상태 전환** - 세션 재시작(닫고 바로 다시 열기) · 리모트 켜기/끄기 · 관리 추가/제거 · bg 전환
+- **닫기/삭제** - 아래쪽에 따로 구분
 
 <img src="docs/images/context-menu.png" width="860" alt="세션 우클릭 메뉴">
 
@@ -168,10 +169,10 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 <img src="docs/images/new-session.png" width="860" alt="새 세션">
 
 ### 🌙 bg 전환
-실행 중 세션을 백그라운드로 보냅니다. 터미널 창은 닫히고 세션은 계속 실행 — 이름 앞에 `[MMddHHmm]` 시각이 붙고, 리모트가 켜져 있었으면 백그라운드에서도 이어받습니다.
+실행 중 세션을 백그라운드로 보냅니다. 터미널 창은 닫히고 세션은 계속 실행 - 이름 앞에 `[MMddHHmm]` 시각이 붙고, 리모트가 켜져 있었으면 백그라운드에서도 이어받습니다.
 **화면표시**로 언제든 다시 보고, **화면닫기**로 창만 닫아도 계속 돕니다.
 
-### 📱 리모트 컨트롤 — 폰/웹에서 이 Mac 조종
+### 📱 리모트 컨트롤 - 폰/웹에서 이 Mac 조종
 세션의 **리모트**를 켜면 `/remote-control` 이 실행돼, **claude.ai/code 또는 모바일 Claude 앱**에서 그 세션이 그대로 보이고 조종됩니다.
 
 1. 패널에서 세션의 **리모트 ○** 를 누름 → 2. "리모트를 켰습니다" → 3. 패널에 **● 켜짐** → 4. **claude.ai/code(웹/앱)에서 그 세션 조종**
@@ -196,6 +197,25 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 
 <img src="docs/images/groups.png" width="860" alt="그룹으로 거르기">
 
+### 🗓️ 세션 보관 기간 · 기간만료
+Claude Code 는 **보관 기간(기본 30일)이 지난 세션의 대화 파일을 스스로 지웁니다.** 관리에 담아 둔 세션이 어느 날 "대화가 없다"며 안 열리는 이유가 이것입니다. CCKit 은 이걸 구분해서 보여주고, 보관 기간을 바로 바꿀 수 있게 합니다.
+
+- **닫힌 세션 · 모든 세션 · 관리 세션** 탭에서 대화 파일이 사라진 관리 세션의 상태 칸이 빨간 글씨로 나옵니다.
+  - **기간만료** - 보관 기간이 지나 Claude Code 가 지운 것. 누르면 설정의 보관 기간 칸으로 갑니다.
+  - **대화없음** - 보관 기간과 상관없이 CCKit 밖에서 사라진 것. 폴더도 없으면 폴더 칸까지 빨갛게 나옵니다.
+- 닫힌 세션의 상태 칸에는 **닫은 시각**(`닫힘 10-27 12:53`)이 나오고, 최근에 닫은 순으로 정렬됩니다.
+
+<img src="docs/images/expired-closed.png" width="860" alt="닫힌 세션 · 기간만료와 대화없음">
+
+- 관리 세션 탭에서도 같은 표시가 나옵니다. 왼쪽 아래 **`세션 보관 30일`** 박스는 지금 보관 기간이며, 누르면 설정으로 갑니다.
+
+<img src="docs/images/expired-managed.png" width="860" alt="관리 세션 · 기간만료와 대화없음">
+
+- **설정 → 세션 보관 기간 (Claude Code)** 에서 일수를 바꾸면 바로 `~/.claude/settings.json` 의 `cleanupPeriodDays` 에 저장됩니다. 다른 설정은 그대로 둡니다.
+- 일수를 늘리면 **앞으로** 지워지는 것만 막습니다. 이미 지워진 대화는 되살릴 수 없으므로 계속 `기간만료` 로 표시합니다.
+
+<img src="docs/images/retention-setting.png" width="860" alt="설정 · 세션 보관 기간">
+
 ### 📋 상세 정보 · ⚙ 설정 · 메뉴바
 
 <img src="docs/images/detail.png" width="860" alt="세션 상세"><br>
@@ -218,7 +238,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
   ```
 
 ### 📖 사용 설명서
-패널 왼쪽 **? 사용 설명서** (또는 메뉴바 → 사용법) — 4개 언어.
+패널 왼쪽 **? 사용 설명서** (또는 메뉴바 → 사용법) - 4개 언어.
 
 <img src="docs/images/guide.png" width="860" alt="사용 설명서">
 
@@ -245,7 +265,7 @@ $ ccd
 ## 📋 요구사항
 - **macOS 12 이상** (Apple Silicon · Intel)
 - **Terminal.app**(기본) 또는 **iTerm2**
-- **Claude Code CLI** — 없으면 설정 → 선행 프로그램에서 설치
+- **Claude Code CLI** - 없으면 설정 → 선행 프로그램에서 설치
 - 리모트 컨트롤은 Claude 구독(Pro · Max · Team · Enterprise) 계정 로그인 필요
 
 ## 🗑️ 삭제
@@ -257,5 +277,5 @@ curl -fsSL https://github.com/hull-kr/Claude-Code-Kit-Mac/releases/latest/downlo
 
 ## 📄 라이선스 / 제작
 - **제작:** [hull.kr](https://hull.kr) · **문의:** kimkap10@gmail.com
-- **무료 자유 소프트웨어(Freeware)** — 자유롭게 받아 쓰세요. Apple 개발자 서명·공증은 하지 않았습니다.
+- **무료 자유 소프트웨어(Freeware)** - 자유롭게 받아 쓰세요. Apple 개발자 서명·공증은 하지 않았습니다.
 - © 2026 hull.kr
