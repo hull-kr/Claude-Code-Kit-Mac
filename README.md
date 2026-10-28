@@ -27,6 +27,9 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 <p align="center">
   macOS 12 이상 &nbsp;&nbsp;·&nbsp;&nbsp; Apple Silicon · Intel &nbsp;&nbsp;·&nbsp;&nbsp; 무료(Freeware)
 </p>
+<p align="center">
+  <sub>📖 자세한 사용법은 <a href="https://claudecodelab.tistory.com/2">여기서 확인하세요</a>.</sub>
+</p>
 
 <br>
 
