@@ -27,9 +27,6 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 <p align="center">
   macOS 12 이상 &nbsp;&nbsp;·&nbsp;&nbsp; Apple Silicon · Intel &nbsp;&nbsp;·&nbsp;&nbsp; 무료(Freeware)
 </p>
-<p align="center">
-  <sub>📖 자세한 사용법은 <a href="https://claudecodelab.tistory.com/2">여기서 확인하세요</a>.</sub>
-</p>
 
 <br>
 
@@ -121,6 +118,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 | ★ **관리 / 이어서 열기** | 즐겨찾기 세션 + 한 번에 복원 |
 | 🏷️ **그룹** | 강의·개발처럼 세션을 묶고 탭으로 걸러 보기 |
 | 🗓️ **세션 보관 기간** | Claude Code 가 오래된 대화를 지우는 기간 확인·변경, 지워진 세션은 `기간만료` 로 표시 |
+| 🔑 **로그인 확인** | 구독 로그인을 막는 API 키(셸 환경변수·settings.json) 확인·비우기 + 구독 로그인 상태 + 버튼 하나로 `/login` |
 | 🔄 **재부팅 자동 복원** | 로그인 시 재부팅 직전 세션 자동 복원 |
 | 🧩 **선행 프로그램** | Node.js·Python·Git·Claude Code 확인·설치·최신판 비교 |
 | 🔔 **업데이트** | 새 버전 알림 · 앱 안에서 바로 업데이트 |
@@ -218,6 +216,24 @@ Claude Code 는 **보관 기간(기본 30일)이 지난 세션의 대화 파일�
 - 일수를 늘리면 **앞으로** 지워지는 것만 막습니다. 이미 지워진 대화는 되살릴 수 없으므로 계속 `기간만료` 로 표시합니다.
 
 <img src="docs/images/retention-setting.png" width="860" alt="설정 · 세션 보관 기간">
+
+### 🔑 로그인 확인 - 구독 로그인이 안 될 때
+예전에 `ANTHROPIC_API_KEY` 를 넣어 둔 채 구독(Claude.ai) 로그인을 하면, **Claude Code 는 키를 우선 씁니다.** 그 키가 만료·무효면 로그인을 몇 번 해도 계속 막힙니다. 왼쪽 메뉴 맨 아래 **로그인 확인** 화면에서 키가 어디에 남아 있는지 보고 바로 비울 수 있습니다.
+
+- 키가 설정될 수 있는 세 곳을 **한 줄씩 따로** 보여 줍니다 (우선순위 순). 설정 안 됨 = 초록, 설정됨 = 주황, 키는 앞뒤만 보이게 가립니다.
+  - **OS 환경변수** - 셸 설정 파일(`~/.zshrc`·`~/.zprofile`·`~/.bash_profile` 등)의 `export ANTHROPIC_API_KEY=…` 와 `launchctl setenv`. 어느 파일 몇째 줄인지도 보여 줍니다.
+    **비우기** 를 누르면 그 파일을 먼저 백업(`.cckit-backup-날짜`)한 뒤 그 줄을 지우지 않고 주석으로 바꿉니다. 이미 열린 터미널에는 남아 있으니 새 터미널부터 반영됩니다.
+  - **settings.json env** - `~/.claude/settings.json` 의 `env.ANTHROPIC_API_KEY`. 입력칸에 넣고 **저장** 하면 새로 여는 세션부터 반영됩니다.
+  - **settings.json apiKeyHelper** - `"apiKeyHelper": "echo 키"` 형태로 저장합니다. 세션을 다시 열지 않아도 **바로 반영**됩니다.
+- 저장·비우기는 settings.json 의 **그 키 하나만** 바꾸고 다른 설정은 그대로 둡니다. 파일이 깨져 있으면 덮어쓰지 않습니다. 비우기는 확인 창을 한 번 거칩니다.
+- 저장하면 진행 막대가 있는 안내로 **어디에 저장했는지와 언제 반영되는지** 알려 줍니다.
+
+<img src="docs/images/login-check.png" width="860" alt="로그인 확인 - 셸 설정 파일에 남은 예전 키"><br>
+<img src="docs/images/login-save.png" width="860" alt="로그인 확인 - 저장 후 안내">
+
+- **구독(Claude.ai) 로그인 상태** - 로그인됨 / 로그인 만료됨 / 로그인 안 됨과 계정·조직·플랜을 보여 줍니다. Mac 의 Claude Code 는 로그인 정보를 키체인에 두므로 `claude auth status` 로 확인합니다 (CCKit 은 키체인 비밀값을 읽지 않습니다).
+- **구독 로그인 진행 (새 터미널에서 /login)** - 새 Terminal 창에서 claude 를 띄우고 `/login` 을 자동으로 입력합니다. 로그인 방법(1번 = 구독 계정)·브라우저 인증·팀 선택은 그 창에서 직접 하세요.
+  로그인이 끝나면 **그 임시 창은 몇 초 안에 저절로 닫히고**, 세션 목록에도 남지 않습니다.
 
 ### 📋 상세 정보 · ⚙ 설정 · 메뉴바
 
