@@ -50,7 +50,7 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit)
 | `claude attach <id>` | 백그라운드 **화면표시** / **화면닫기** |
 | `claude stop` / `rm` | 백그라운드 **세션 닫기** |
 | 이미지 경로 입력 | **⌃⇧V** (클립보드 이미지 자동 저장·경로 입력) |
-| `.claude/settings.local.json` 의 `env` 를 손으로 고쳐 다른 회사 모델 연결 | 세션 우클릭 → **타사 API 설정 (베타)** |
+| `.claude/settings.local.json` 을 손으로 고쳐 세션마다 다른 키·모델 연결 | 세션 우클릭 → **세션별 API 설정** |
 
 > ℹ️ **`ccd`** 는 Claude 순정 명령이 아니라 **CCKit 이 추가하는 단축 명령**입니다 (`ccd = claude --dangerously-skip-permissions`). 아래 [ccd 단축 명령](#️-ccd-단축-명령) 참고.
 
@@ -120,7 +120,8 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 | 🏷️ **그룹** | 강의·개발처럼 세션을 묶고 탭으로 걸러 보기 |
 | 🗓️ **세션 보관 기간** | Claude Code 가 오래된 대화를 지우는 기간 확인·변경, 지워진 세션은 `기간만료` 로 표시 |
 | 🔑 **로그인 확인** | 구독 로그인을 막는 API 키(셸 환경변수·settings.json) 확인·비우기 + 구독 로그인 상태 + 버튼 하나로 `/login` |
-| 🌐 **타사 API 설정 (베타)** | OpenRouter 키로 다른 회사 모델(예: `openai/gpt-5.6-luna`)을 **폴더(프로젝트)별로만** 연결·해제 - 전역 설정은 안 건드림 |
+| 🌐 **세션별 API 설정** | 오픈라우터 키(다른 회사 모델) · 앤트로픽 키(Claude 모델)를 **폴더(프로젝트)별로만** 연결·해제, 등록한 모델로 잠금 - 전역 설정은 안 건드림 |
+| 🔍 **세션 검색** | 제목·폴더·그룹·세션ID 부분 일치로 지금 탭·그룹 안에서 거르기 - 탭을 옮겨도 검색어 유지 |
 | 🔄 **재부팅 자동 복원** | 로그인 시 재부팅 직전 세션 자동 복원 |
 | 🧩 **선행 프로그램** | Node.js·Python·Git·Claude Code 확인·설치·최신판 비교 |
 | 🔔 **업데이트** | 새 버전 알림 · 앱 안에서 바로 업데이트 |
@@ -151,6 +152,9 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 - **폴더 칸 클릭** = Finder 로 그 폴더 열기
 - **더블클릭:** 제목칸 = 이름 바꾸기, 상태·종류·시작칸 = 상세 정보
 - **모든 세션** 탭에서 열린·닫힌 세션을 한눈에 (닫힌 세션 열기/삭제, 빈 세션 정리)
+- **세션 검색** - 그룹 탭 줄 바로 아래 검색칸. 제목 · 폴더 · 그룹 · 세션ID 중 하나라도 들어 있으면 보입니다(대소문자 무시, 0.25초 멈추면 거름). **지금 탭과 선택한 그룹 안에서만** 거르고, 왼쪽 메뉴로 탭을 옮겨도 검색어는 남습니다. `Esc` 또는 **초기화** 로 비웁니다.
+
+<img src="docs/images/session-search.png" width="860" alt="세션 검색 - 그룹 탭 아래 검색칸">
 
 <img src="docs/images/all-sessions.png" width="860" alt="모든 세션">
 
@@ -159,7 +163,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 
 - **정보** - 상세 정보, 세션ID 복사
 - **탐색** - 터미널 창 앞으로, 폴더 열기, 이름 바꾸기
-- **그룹** - 그룹 지정 · **타사 API 설정 `[지금 적용된 것]`** ([아래](#-타사-api-설정-베타---openrouter-키로-다른-회사-모델-쓰기) 참고)
+- **그룹** - 그룹 지정 · **세션별 API 설정 `[지금 적용된 것]`** ([아래](#-세션별-api-설정---세션폴더마다-다른-키모델-쓰기) 참고)
 - **상태 전환** - 세션 재시작(닫고 바로 다시 열기) · 리모트 켜기/끄기 · 관리 추가/제거 · bg 전환
 - **닫기/삭제** - 아래쪽에 따로 구분
 
@@ -168,7 +172,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 ### ➕ 새 세션
 하단 **`＋ 새 세션`** → 폴더 선택 + 세션명 + 그룹 + **원격 연결** + 관리 추가. 새 폴더의 "이 폴더를 신뢰?" 물음은 자동으로 통과합니다.
 원격 연결을 체크하면 세션이 뜨는 대로 리모트까지 켜고, 적용하지 못한 것이 있으면 알려 줍니다.
-**타사 API 프로필**을 고르면 세션을 열기 전에 그 폴더에 적용해 처음부터 그 모델로 엽니다 (기본 = 사용 안 함, 클로드 모델).
+**세션별 API 프로필**을 고르면 세션을 열기 전에 그 폴더에 적용해 처음부터 그 모델로 엽니다 (기본 = 사용 안 함 - 클로드 구독제 또는 PC 에 설정한 클로드 API).
 
 <img src="docs/images/new-session.png" width="860" alt="새 세션">
 
@@ -221,7 +225,7 @@ Claude Code 는 **보관 기간(기본 30일)이 지난 세션의 대화 파일�
 <img src="docs/images/retention-setting.png" width="860" alt="설정 · 세션 보관 기간">
 
 ### 🔑 로그인 확인 - 구독 로그인이 안 될 때
-예전에 `ANTHROPIC_API_KEY` 를 넣어 둔 채 구독(Claude.ai) 로그인을 하면, **Claude Code 는 키를 우선 씁니다.** 그 키가 만료·무효면 로그인을 몇 번 해도 계속 막힙니다. 왼쪽 메뉴 맨 아래 **로그인 확인** 화면에서 키가 어디에 남아 있는지 보고 바로 비울 수 있습니다.
+예전에 `ANTHROPIC_API_KEY` 를 넣어 둔 채 구독(Claude.ai) 로그인을 하면, **Claude Code 는 키를 우선 씁니다.** 그 키가 만료·무효면 로그인을 몇 번 해도 계속 막힙니다. 왼쪽 메뉴 **로그인 확인** 화면(맨 위 제목 **앤트로픽 API 키 설정** 옆에 키 발급 사이트 [platform.claude.com](https://platform.claude.com) 링크)에서 키가 어디에 남아 있는지 보고 바로 비울 수 있습니다.
 
 - 키가 설정될 수 있는 세 곳을 **한 줄씩 따로** 보여 줍니다 (우선순위 순). 설정 안 됨 = 초록, 설정됨 = 주황, 키는 앞뒤만 보이게 가립니다.
   - **OS 환경변수** - 셸 설정 파일(`~/.zshrc`·`~/.zprofile`·`~/.bash_profile` 등)의 `export ANTHROPIC_API_KEY=…` 와 `launchctl setenv`. 어느 파일 몇째 줄인지도 보여 줍니다.
@@ -238,26 +242,38 @@ Claude Code 는 **보관 기간(기본 30일)이 지난 세션의 대화 파일�
 - **구독 로그인 진행 (새 터미널에서 /login)** - 새 Terminal 창에서 claude 를 띄우고 `/login` 을 자동으로 입력합니다. 로그인 방법(1번 = 구독 계정)·브라우저 인증·팀 선택은 그 창에서 직접 하세요.
   로그인이 끝나면 **그 임시 창은 몇 초 안에 저절로 닫히고**, 세션 목록에도 남지 않습니다.
 
-### 🌐 타사 API 설정 (베타) - OpenRouter 키로 다른 회사 모델 쓰기
-Claude 구독 대신 **[OpenRouter](https://openrouter.ai) 키**로 다른 회사 모델(예: `openai/gpt-5.6-luna`)을 Claude Code 에서 씁니다.
-**반드시 폴더(프로젝트)별로만** 적용합니다 - 그 세션 폴더의 `.claude/settings.local.json` 에만 쓰고, **전역 `~/.claude/settings.json` · OS 환경변수(`~/.zshrc` 등)는 절대 건드리지 않습니다.** 다른 프로젝트는 그대로 클로드 모델로 돕니다.
+### 🌐 세션별 API 설정 - 세션(폴더)마다 다른 키·모델 쓰기
+세션마다 다른 API 키와 모델을 붙입니다. 등록 칸은 두 가지입니다.
+
+| 종류 | 키 발급 | 키 | 쓰는 모델 |
+|---|---|---|---|
+| **오픈라우터 API 키 프로필** | [openrouter.ai](https://openrouter.ai) | `sk-or-v1-...` (크레딧 충전 필요) | 다른 회사 모델 - 예: `openai/gpt-5.6-luna` (약 470개) |
+| **앤트로픽 API 키 프로필** | [platform.claude.com](https://platform.claude.com) | `sk-ant-...` | Claude 모델 - `claude-opus-5-5` · `claude-sonnet-5-5` · `claude-haiku-5-5` · `claude-fable-5-2` |
+
+**반드시 폴더(프로젝트)별로만** 적용합니다 - 그 세션 폴더의 `.claude/settings.local.json` 에만 쓰고, **전역 `~/.claude/settings.json` · OS 환경변수(`~/.zshrc` 등)는 절대 건드리지 않습니다.** 다른 프로젝트는 그대로 원래 방식(구독 또는 PC 에 설정한 API 키)으로 돕니다.
+OpenAI · 구글 키는 프록시 없이는 Claude Code 에 붙지 않아 넣지 않았습니다 - GPT · Gemini 모델도 OpenRouter 키로 쓰세요.
 
 **쓰는 순서**
-1. [openrouter.ai](https://openrouter.ai) 에서 키를 만듭니다 (`sk-or-v1-...`, 크레딧 충전 필요).
-2. 왼쪽 메뉴 **타사 API 설정** → 맨 위 입력 줄에 **이름 · 모델 · API 키** 를 넣고 **추가**.
-   - **모델** 칸은 OpenRouter 공개 모델 목록(약 470개)에서 **일부만 쳐도 찾습니다** (`luna`, `gemini`, `claude` … 대소문자 무관, 중간 글자도 됨). `↑↓` 로 고르고 `Enter` 확정, `Esc` 닫기.
-   - 프로필은 **번호(#)** 로 관리합니다. **수정** 을 누르면 입력 줄로 불러와 고친 뒤 **저장** - 이름을 바꿔도 같은 프로필이 고쳐집니다.
-3. 세션 목록에서 세션 **우클릭 → 타사 API 설정 `[지금 적용된 것]`** → 프로필 선택. 지금 적용된 것에 ✓ 가 붙습니다.
-   - 새로 만들 세션이면 **＋ 새 세션** 창의 **타사 API 프로필** 칸에서 고르면 됩니다 (리모트는 쓸 수 없어 원격 연결 체크를 꺼 줍니다).
+1. 왼쪽 메뉴 **세션별 API 설정** → 쓸 종류의 등록 칸에 **이름 · 모델 · API 키** 를 넣고 **추가**.
+   - **모델** 칸은 **일부만 쳐도 찾습니다** (오픈라우터 = OpenRouter 공개 모델 목록, 앤트로픽 = Claude 모델 4개. 대소문자 무관, 중간 글자도 됨). `↑↓` 로 고르고 `Enter` 확정, `Esc` 닫기.
+   - 흔한 실수는 저장 전에 한 번 묻습니다 - 오픈라우터 칸에 `sk-or-` 아닌 키 · 목록에 없는 모델, 앤트로픽 칸에 `sk-ant-` 아닌 키 · `claude-` 아닌 모델.
+2. 아래 **프로필 목록** 하나에 두 종류가 다 쌓입니다 (# · 종류 · 이름 · 모델 · 엔드포인트). **수정** 을 누르면 그 종류의 등록 칸으로 불러와 고친 뒤 **저장** - 번호(#)로 찾아서 이름을 바꿔도 같은 프로필이 고쳐집니다.
+   **키·모델을 고치면 그 프로필을 쓰던 폴더도 새 값으로 다시 적용**합니다.
+3. 세션 목록에서 세션 **우클릭 → 세션별 API 설정 `[지금 적용된 것]`** → 프로필 선택. 지금 적용된 것에 ✓ 가 붙습니다.
+   - 새로 만들 세션이면 **＋ 새 세션** 창의 **세션별 API 프로필** 칸에서 고르면 됩니다 (리모트는 쓸 수 없어 원격 연결 체크를 꺼 줍니다).
 4. 그 폴더에 **열려 있는 세션**이 있으면 "지금 재시작할까요? (대화는 이어집니다)" 를 묻습니다. **예** = 닫고 `--resume` 으로 다시 열어 바로 그 모델로 이어집니다.
-5. 해제 = 우클릭 → 타사 API 설정 → **사용 안 함 (클로드 모델)**. 타사 API 탭에서 프로필을 누르면 **그 프로필이 적용된 세션**이 아래 표에 나오고, **선택 세션에서 해제** 로도 풀 수 있습니다.
+5. 해제 = 우클릭 → 세션별 API 설정 → **사용 안 함 (클로드 구독제 사용)**. 괄호 안은 PC 기본 인증입니다 - 셸 환경변수·`~/.claude/settings.json` 에 API 키(`ANTHROPIC_API_KEY` · `ANTHROPIC_AUTH_TOKEN` · `apiKeyHelper`)가 있으면 **(클로드 API 사용)** 으로 나옵니다.
+   프로필 목록에서 행을 누르면 **그 프로필이 적용된 세션**이 아래 표에 나오고, **선택 세션에서 해제** 로도 풀 수 있습니다.
 
-<img src="docs/images/thirdparty-tab.png" width="860" alt="타사 API 설정 - 프로필 목록 · 모델 부분 일치 검색 · 적용된 세션"><br>
-<img src="docs/images/thirdparty-menu.png" width="860" alt="세션 우클릭 - 타사 API 설정 [루나 5.6]"><br>
-<img src="docs/images/thirdparty-submenu.png" width="860" alt="타사 API 설정 하위 메뉴 - 지금 적용된 프로필에 체크"><br>
-<img src="docs/images/thirdparty-new.png" width="860" alt="새 세션 만들기 - 타사 API 프로필 선택">
+<img src="docs/images/thirdparty-tab.png" width="860" alt="세션별 API 설정 - 오픈라우터 · 앤트로픽 등록 칸, 모델 부분 일치 검색, 프로필 목록"><br>
+<img src="docs/images/thirdparty-anthropic.png" width="860" alt="앤트로픽 모델 자동완성과 알아둘 것"><br>
+<img src="docs/images/thirdparty-menu.png" width="860" alt="세션 우클릭 - 세션별 API 설정 [루나 5.6]"><br>
+<img src="docs/images/thirdparty-submenu.png" width="860" alt="하위 메뉴 - 사용 안 함 (클로드 구독제 사용) · 지금 적용된 프로필에 체크"><br>
+<img src="docs/images/thirdparty-new.png" width="860" alt="새 세션 만들기 - 세션별 API 프로필 선택">
 
-**실제로 들어가는 값** (`<세션 폴더>/.claude/settings.local.json` - [OpenRouter 공식 Claude Code 연동 방식](https://openrouter.ai/docs/guides/coding-agents/claude-code-integration))
+**실제로 들어가는 값** (`<세션 폴더>/.claude/settings.local.json`)
+
+오픈라우터 - [OpenRouter 공식 Claude Code 연동 방식](https://openrouter.ai/docs/guides/coding-agents/claude-code-integration):
 ```json
 {
   "env": {
@@ -267,25 +283,46 @@ Claude 구독 대신 **[OpenRouter](https://openrouter.ai) 키**로 다른 회�
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "openai/gpt-5.6-luna",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "openai/gpt-5.6-luna",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "openai/gpt-5.6-luna"
-  }
+  },
+  "model": "openai/gpt-5.6-luna",
+  "availableModels": ["openai/gpt-5.6-luna"],
+  "enforceAvailableModels": true
 }
 ```
-- 주소는 **짧은 `https://openrouter.ai/api`** 만 넣습니다. Claude Code 가 뒤에 `/v1/messages` 를 스스로 붙입니다 (전체 주소를 넣으면 `/v1/messages/v1/messages` 가 되어 404). 표의 엔드포인트 칸에는 실제로 부르는 `https://openrouter.ai/api/v1/messages` 를 보여 줍니다.
-- 키는 `ANTHROPIC_AUTH_TOKEN` 에 넣고, `ANTHROPIC_API_KEY` 는 **빈 값으로 명시**해 다른 곳(셸 환경변수 등)에 남은 키가 먼저 쓰이는 것을 막습니다.
-- 이 파일의 **다른 설정·다른 env 항목은 그대로** 두고 위 6개만 넣고 뺍니다. 해제하면 6개만 지우고, env 가 비면 env 항목도 지웁니다. 파일이 깨져 있으면 덮어쓰지 않습니다.
+앤트로픽:
+```json
+{
+  "env": {
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_MODEL": "claude-sonnet-5-5"
+  },
+  "apiKeyHelper": "echo sk-ant-...",
+  "model": "claude-sonnet-5-5",
+  "availableModels": ["claude-sonnet-5-5"],
+  "enforceAvailableModels": true
+}
+```
+- 오픈라우터 주소는 **짧은 `https://openrouter.ai/api`** 만 넣습니다. Claude Code 가 뒤에 `/v1/messages` 를 스스로 붙입니다 (전체 주소를 넣으면 404). 표의 엔드포인트 칸에는 실제로 부르는 주소를 보여 줍니다.
+- `ANTHROPIC_API_KEY` 는 **빈 값으로 명시**해 다른 곳(셸 환경변수 등)에 남은 키가 먼저 쓰이는 것을 막습니다.
+- **앤트로픽 키는 `ANTHROPIC_API_KEY` 가 아니라 `apiKeyHelper` 로 넣습니다.** `ANTHROPIC_API_KEY` 로 넣으면 세션 처음에 "Detected a custom API key… use this API key?" 를 묻고, 한 번 No 를 고르면 그 키가 거부 목록에 남아 이후 그 폴더 세션이 **말없이 구독으로** 돕니다. `apiKeyHelper` 는 묻지 않고 바로 키로 엽니다. 이 값은 셸 명령으로 실행되므로 키에는 영문·숫자·`-`·`_`·`.` 만 받습니다.
+- **모델 잠금** - `model` · `availableModels` · `enforceAvailableModels` 로 **등록한 모델로만 열리고** 그 폴더에서는 `/model` · `--model` 로 바꿀 수 없습니다 (`Model '…' is not available. Your organization restricts model selection.`). 잠금이 없으면 `/model` 로 바꿀 때 전역 `~/.claude/settings.json` 에 모델이 저장되는 부작용도 있었습니다.
+- 적용할 때마다 **전에 넣은 값(env 의 `ANTHROPIC_*` 7개 · 잠금 3개 · CCKit 이 넣은 `echo sk-…` apiKeyHelper)을 먼저 지우고** 새로 써서 오픈라우터 ↔ 앤트로픽 전환이 깨끗합니다. 해제도 이것들만 지우고 **다른 설정·다른 env 항목·직접 넣은 apiKeyHelper 는 그대로** 둡니다. 파일이 깨져 있으면 덮어쓰지 않습니다.
 - 프로필 밖에서 손으로 넣은 값이 있으면 메뉴에 `[직접 설정됨 (모델)]` 과 회색 체크 줄로 보여 줍니다.
 
 **이어 열기 모델 자동 보정** - Claude Code 는 이어 열면(`--resume`) 대화 기록의 **마지막 응답 모델을 그대로** 씁니다. 그래서 해제한 뒤 그냥 이어 열면 `openai/gpt-5.6-luna` 가 남아 "There's an issue with the selected model" 오류가 납니다. CCKit 은 이어 열 때 기록의 모델과 지금 폴더 설정을 비교해 맞춰 엽니다.
-- 폴더에 타사 설정이 있고 기록 모델과 다르면 → `--model <프로필 모델>`
-- 폴더에 타사 설정이 없는데 기록 모델이 타사 ID(`/` 포함)면 → `--model default` (클로드 기본 모델)
+- 폴더에 설정이 있고 기록 모델과 다르면 → `--model <프로필 모델>`
+- 폴더에 설정이 없는데 기록 모델이 OpenRouter ID(`/` 포함)면 → `--model default` (클로드 기본 모델)
 - 그 외는 그대로
 
 **키 보안** - 키는 그 폴더의 `settings.local.json` 에 평문으로 들어갑니다. **git 저장소 폴더면 `.gitignore` 에 `.claude/settings.local.json` 줄이 없을 때 자동으로 추가**해 키가 커밋되지 않게 합니다. 프로필(키 포함)은 `~/Library/Application Support/CCKit/thirdparty.json` 에 저장됩니다.
 
 **알아둘 한계**
-- 키로 연결한 세션은 **claude.ai 계정 기능(Artifact · Docs · 리모트 컨트롤 · 커넥터)을 쓸 수 없습니다** - `/remote-control` 은 `Unknown command` 로 나옵니다. **Anthropic API 키로 연결해도 같습니다.** 로컬 스킬·파일 작업은 그대로 됩니다.
-- **OpenAI 키(`sk-proj-...`)는 쓸 수 없습니다.** Claude Code 는 Anthropic 방식 주소(`/v1/messages`)를 부르는데, `api.openai.com` 에는 그 주소가 없어 404, OpenRouter 주소에 OpenAI 키를 넣으면 401 이 납니다. OpenRouter 키를 쓰세요 (OpenAI 모델도 OpenRouter 로 씁니다). OpenRouter 키가 아니면 저장 전에 한 번 더 묻습니다.
-- 설정은 **폴더 단위**라 그 폴더에서 연 세션이 전부 같은 모델을 씁니다. 사용 요금은 OpenRouter 크레딧에서 나갑니다.
+- 키로 연결한 세션은 **claude.ai 계정 기능(Artifact · Docs · 리모트 컨트롤 · 커넥터)을 쓸 수 없습니다** - `/remote-control` 은 `Unknown command` 로 나옵니다. **앤트로픽 API 키도 같습니다.** 로컬 스킬·파일 작업은 그대로 됩니다.
+- **OpenAI 키(`sk-proj-...`)는 쓸 수 없습니다.** Claude Code 는 Anthropic 방식 주소(`/v1/messages`)를 부르는데, `api.openai.com` 에는 그 주소가 없어 404, OpenRouter 주소에 OpenAI 키를 넣으면 401 이 납니다. 구글도 같습니다.
+- 키로 연결한 세션 아래에 나오는 `⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth…` 경고는 **정상**입니다 - 위의 claude.ai 기능을 못 쓴다는 안내일 뿐, 대화·파일 작업은 그대로 됩니다.
+- 앤트로픽 키는 **승인 질문 없이 바로 적용**됩니다 (`apiKeyHelper` 로 넣기 때문 - 위 설명 참고). 첫 화면에 `Sonnet 5.5 · API Usage Billing` 처럼 나오면 키로 돌고 있는 것입니다.
+- **앤트로픽 키 자체에는 모델 허용 목록이 없습니다.** CCKit 의 모델 잠금은 그 폴더에서만 걸리므로, 키를 다른 데서 쓰면 어떤 모델이든 쓸 수 있습니다. 수업 등에 나눠 줄 키라면 [Claude Console](https://platform.claude.com) 에서 **수업용 워크스페이스를 따로 만들어 지출 한도를 걸고** 그 워크스페이스에서 키를 만드세요 (기본 워크스페이스에는 지출 한도를 걸 수 없습니다).
+- 설정은 **폴더 단위**라 그 폴더에서 연 세션이 전부 같은 모델을 씁니다. 사용 요금은 OpenRouter 크레딧 / Anthropic Console 사용량에서 나갑니다.
 
 ### 📋 상세 정보 · ⚙ 설정 · 메뉴바
 
