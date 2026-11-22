@@ -356,7 +356,7 @@ Claude Code **데스크톱 앱**(Claude.app)이 돌리는 세션도 목록에 �
 CCKit 으로 재개발 세션 열어 줘
 ```
 
-Claude 가 Mac 에서 아래 명령을 실행하고, CCKit 이 패널의 **열기** 단추와 똑같이 그 세션을 엽니다. 리모트가 켜지면서(Claude Code 에서 리모트를 기본으로 켜 둔 경우) **앱 목록에 그 세션이 나타나니** 눌러서 이어 쓰면 됩니다.
+클로드 코드가 Mac 에서 아래 명령을 실행하고, CCKit 이 패널의 **열기** 단추와 똑같이 그 세션을 엽니다. 리모트가 켜지면서(Claude Code 에서 리모트를 기본으로 켜 둔 경우) **앱 목록에 그 세션이 나타나니** 눌러서 이어 쓰면 됩니다.
 
 ```bash
 "/Applications/Claude Code Kit.app/Contents/MacOS/Claude Code Kit" --open 재개발
