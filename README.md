@@ -8,7 +8,7 @@
 
 Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit) · 📖 자세한 사용법은 [CCKit 사용법 공지](https://hull.kr/cckit_/6)
 
-> 🆕 **v1.4.1 - 모바일 · 데스크톱 앱으로 세션 열기 · 데스크톱 앱 세션**: 밖에서 Claude 모바일 앱이나 데스크톱 앱으로 열려 있는 아무 세션에 **「CCKit 으로 재개발 세션 열어 줘」** 라고만 하면, Mac 에서 닫아 둔 그 세션이 열려 앱 목록에 나타납니다(`--open <세션 이름>`). Claude Code **데스크톱 앱**에서 만든 세션도 목록에 보입니다. → [세션 이름으로 열기](#open-by-name) · [데스크톱 앱 세션](#desktop-sessions)
+> 🆕 **v1.4.1 - 모바일 · 데스크톱 앱으로 세션 열기 · 데스크톱 앱 세션**: 밖에서 Claude Code 모바일 앱이나 데스크톱 앱으로 열려 있는 아무 세션에 **「CCKit 으로 재개발 세션 열어 줘」** 라고만 하면, Mac 에서 닫아 둔 그 세션이 열려 앱 목록에 나타납니다(`--open <세션 이름>`). Claude Code **데스크톱 앱**에서 만든 세션도 목록에 보입니다. → [세션 이름으로 열기](#open-by-name) · [데스크톱 앱 세션](#desktop-sessions)
 >
 > 🆕 **v1.4.0 - 공지사항 · 업데이트 알림**: CCKit 새 소식이 **패널 안 공지사항 · 새 소식 팝업 · 아래 공지 띠**로 바로 보입니다. 기능이 크게 바뀐 업데이트는 CCKit 을 켤 때 **팝업으로 알려 주고, 누르면 그 자리에서 설치**됩니다. → [공지사항](#notice) · [업데이트 알림](#update-alert)
 > 버전 번호를 Windows 판과 맞춰 **0.3.1 다음이 1.4.0** 입니다.
@@ -57,7 +57,7 @@ Windows 판 → [Claude Code Kit](https://github.com/hull-kr/Claude-Code-Kit) ·
 | 이미지 경로 입력 | **⌃⇧V** (클립보드 이미지 자동 저장·경로 입력) |
 | `.claude/settings.local.json` 을 손으로 고쳐 세션마다 다른 키·모델 연결 | 세션 우클릭 → **세션별 API 설정** |
 
-> ℹ️ **`ccd`** 는 Claude 순정 명령이 아니라 **CCKit 이 추가하는 단축 명령**입니다 (`ccd = claude --dangerously-skip-permissions`). 아래 [ccd 단축 명령](#️-ccd-단축-명령) 참고.
+> ℹ️ **`ccd`** 는 Claude Code 순정 명령이 아니라 **CCKit 이 추가하는 단축 명령**입니다 (`ccd = claude --dangerously-skip-permissions`). 아래 [ccd 단축 명령](#️-ccd-단축-명령) 참고.
 
 ---
 
@@ -189,7 +189,7 @@ Homebrew 와 `~/.local/bin`(claude 설치 위치)을 `~/.zprofile` 에 등록합
 **화면표시**로 언제든 다시 보고, **화면닫기**로 창만 닫아도 계속 돕니다.
 
 ### 📱 리모트 컨트롤 - 폰/웹에서 이 Mac 조종
-세션의 **리모트**를 켜면 `/remote-control` 이 실행돼, **claude.ai/code 또는 모바일 Claude 앱**에서 그 세션이 그대로 보이고 조종됩니다.
+세션의 **리모트**를 켜면 `/remote-control` 이 실행돼, **claude.ai/code 또는 모바일 Claude Code 앱**에서 그 세션이 그대로 보이고 조종됩니다.
 
 1. 패널에서 세션의 **리모트 ○** 를 누름 → 2. "리모트를 켰습니다" → 3. 패널에 **● 켜짐** → 4. **claude.ai/code(웹/앱)에서 그 세션 조종**
 
@@ -350,7 +350,7 @@ Claude Code **데스크톱 앱**(Claude.app)이 돌리는 세션도 목록에 �
 <a id="open-by-name"></a>
 ### 📲 모바일 · 데스크톱 앱으로 세션 열기 (v1.4.1)
 
-밖에서 Claude 모바일 앱이나 데스크톱 앱으로 작업하다 보면, Mac 에서 닫아 둔 세션은 앱 목록에 없어 이어 쓸 수가 없었습니다. 이제는 앱에서 **열려 있는 아무 세션에** CCKit 으로 열어 달라고 말하면 됩니다.
+밖에서 Claude Code 모바일 앱이나 데스크톱 앱으로 작업하다 보면, Mac 에서 닫아 둔 세션은 앱 목록에 없어 이어 쓸 수가 없었습니다. 이제는 앱에서 **열려 있는 아무 세션에** CCKit 으로 열어 달라고 말하면 됩니다.
 
 ```
 CCKit 으로 재개발 세션 열어 줘
